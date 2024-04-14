@@ -29,7 +29,8 @@ def monthly_challenge_by_num(request, month_chosen):
     try:
         month_string = list(monthly_challenge_dict.keys())
         redirect_month = month_string[int(month_chosen-1)]
-        redirect_path = reverse("month-challenge", args=[redirect_month]) # /challenge/january
+        redirect_path = reverse(
+            "month-challenge", args=[redirect_month])  # /challenge/january
         return HttpResponseRedirect(redirect_path)
 
     except:
@@ -55,6 +56,8 @@ monthly_challenge_dict = {
 def monthly_challenge(request, month_chosen):
     try:
         if monthly_challenge_dict[month_chosen]:
-            return HttpResponse(monthly_challenge_dict[month_chosen])
+            challenge_text = monthly_challenge_dict[month_chosen]
+            response_data = f"<h1>{challenge_text}</h1>"
+            return HttpResponse(response_data)
     except:
-        return HttpResponseNotFound("Not Found Invalid Month")
+        return HttpResponseNotFound("<h1> Not Found Invalid Month </h1>")
