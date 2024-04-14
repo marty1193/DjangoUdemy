@@ -7,5 +7,5 @@ urlpatterns = [
     # path("february", views.index_feb),
     # Here the value inside <> act as a keyword argument for the corresponding view i.e monthly_challenge
     path("<int:month_chosen>", views.monthly_challenge_by_num),
-    path("<str:month_chosen>", views.monthly_challenge),
+    path("<str:month_chosen>", views.monthly_challenge, name="month-challenge"),
 ]
