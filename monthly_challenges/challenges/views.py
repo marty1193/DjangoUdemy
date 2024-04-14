@@ -61,3 +61,16 @@ def monthly_challenge(request, month_chosen):
             return HttpResponse(response_data)
     except:
         return HttpResponseNotFound("<h1> Not Found Invalid Month </h1>")
+
+
+def index(request):
+    list_items=""
+    months = list(monthly_challenge_dict.keys())
+    
+    for month in months:
+        capitalize_month = month.capitalize()
+        redirect_path = reverse("month-challenge", args=[month])
+        list_items+=f"<li> <a href=\"{redirect_path}\">{capitalize_month}</a> </li>"
+
+    response_data = f"<ul> {list_items} </ul>"
+    return HttpResponse(response_data)
