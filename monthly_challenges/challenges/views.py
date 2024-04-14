@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 
 # Create your views here.
 
@@ -12,19 +12,6 @@ def index_feb(request):
     return HttpResponse("This works - February")
 
 
-
-def monthly_challenge_by_num(request, month_chosen):
-    if month_chosen== 1:
-        challenge_text = "This works- January"
-    elif month_chosen== 2:
-        challenge_text = "This works- February"
-    elif month_chosen== 3:
-        challenge_text = "This works- March"
-    else:
-        return HttpResponseNotFound("This Month is Not supported")
-    
-    return HttpResponse(challenge_text)
-
 # def monthly_challenge(request, month_chosen):
 #     if month_chosen.lower() == "january":
 #         challenge_text = "This works- January"
@@ -34,11 +21,20 @@ def monthly_challenge_by_num(request, month_chosen):
 #         challenge_text = "This works- March"
 #     else:
 #         return HttpResponseNotFound("This Month is Not supported")
-    
 #     return HttpResponse(challenge_text)
 
 
-monthly_challenge_dict={
+def monthly_challenge_by_num(request, month_chosen):
+    try:
+        month_string = list(monthly_challenge_dict.keys())
+        redirect_month = month_string[int(month_chosen-1)]
+        return HttpResponseRedirect("/challenges/"+ redirect_month)
+
+    except:
+        return HttpResponseNotFound("Not Found: Invalid Month Num")
+
+
+monthly_challenge_dict = {
     "january": "This is January Task : Read one Book ",
     "february": "This is February Task : Walk 1 km Daily",
     "March": "This is March Task : Walk 3 km Daily",
@@ -52,6 +48,8 @@ monthly_challenge_dict={
     "November": "This is November Task : Walk 1 km Daily",
     "December": "This is December Task : Walk 3 km Daily",
 }
+
+
 def monthly_challenge(request, month_chosen):
     try:
         if monthly_challenge_dict[month_chosen]:
