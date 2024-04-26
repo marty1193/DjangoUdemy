@@ -39,7 +39,7 @@ def monthly_challenge_by_num(request, month_chosen):
 
 
 monthly_challenge_dict = {
-    "january": "This is January Task : Read one Book ",
+    "January": "This is January Task : Read one Book ",
     "february": "This is February Task : Walk 1 km Daily",
     "March": "This is March Task : Walk 3 km Daily",
     "April": "This is April Task : Eat Apple Daily ",
@@ -50,7 +50,7 @@ monthly_challenge_dict = {
     "September": "This is September Task : Walk 3 km Daily",
     "October": "This is October Task : Read one Book ",
     "November": "This is November Task : Walk 1 km Daily",
-    "December": "This is December Task : Walk 3 km Daily",
+    "December": "None"
 }
 
 
