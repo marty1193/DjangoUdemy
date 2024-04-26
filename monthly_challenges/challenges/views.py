@@ -61,7 +61,7 @@ def monthly_challenge(request, month_chosen):
             #response_data = f"<h1>{challenge_text}</h1>"
             #response_data = render_to_string('challenges\challenge.html')
             #return HttpResponse(response_data)
-            return render(request,"challenges/challenge.html")
+            return render(request,"challenges/challenge.html", {"text":challenge_text, "month_name":month_chosen})
     except:
         return HttpResponseNotFound("<h1> Not Found Invalid Month </h1>")
 
