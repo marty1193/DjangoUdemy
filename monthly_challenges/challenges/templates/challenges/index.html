@@ -5,7 +5,7 @@
 {% endblock%}
 
 {% block content %}
-
+    {% include "challenges/includes/header.html" %}
     <ul>
         {% for month in month_list %}
             <li><a href="{% url "month-challenge" month %}">{{ month}}</a></li>
