@@ -50,7 +50,7 @@ monthly_challenge_dict = {
     "September": "This is September Task : Walk 3 km Daily",
     "October": "This is October Task : Read one Book ",
     "November": "This is November Task : Walk 1 km Daily",
-    "December": "None"
+    "December": None
 }
 
 
