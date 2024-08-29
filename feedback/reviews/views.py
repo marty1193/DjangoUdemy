@@ -16,6 +16,8 @@ def review(request):
         
     return render(request, "reviews/review.html",{
                            "form":form})
+
+
     
         
     
